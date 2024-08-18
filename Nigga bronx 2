@@ -1,0 +1,285 @@
+
+--//bypass adonis--//
+local debugMode = true
+
+local function isAdonisAC(table) -- basic stupid checks
+    return rawget(table, "Detected") and typeof(rawget(table, "Detected")) == "function" and rawget(table, "RLocked")
+end
+local function dwarn(func, ...)
+    if debugMode then
+        --print("debug mode enable")
+        func(...)
+    end
+end
+
+dwarn(warn, "------------------------------")
+
+for _, v in next, getgc(true) do
+    if typeof(v) == "table" and isAdonisAC(v) then
+        dwarn(warn, "uwu")
+        for i, v in next, v do
+            dwarn(print, i, typeof(v))
+            if rawequal(i, "Detected") then
+                dwarn(warn, "^^^^^^^")
+                local old;
+                old = hookfunction(v, function(action, info, nocrash)
+                    if rawequal(action, "_") and rawequal(info, "_") and rawequal(nocrash, true) then
+                        -- warn("checkup")
+                        return old(action, info, nocrash)
+                    end
+                    dwarn(warn, "detected for :", action, info, nocrash)
+                    return task.wait(9e9)
+                end)
+            end
+        end
+    end
+end
+
+warn("bypassed adonis ac")
+--//Bypass//--
+local old
+old = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
+    if not checkcaller() then
+        local func = getnamecallmethod()
+        local cScript = getcallingscript()
+        local args = {...}
+        if rawequal(func, "FireServer") and tonumber(self) then
+            warn(self.Name)
+            return wait(9e9)
+    
+        end
+    end
+    return old(self, ...)
+end))
+local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
+
+
+local GUI = Mercury:Create{
+    Name = "Home",
+    Size = UDim2.fromOffset(600, 400),
+    Theme = Mercury.Themes.Dark,
+    Link = "Tha bronx 2 | by boweb"
+}
+
+local Tab1 = GUI:Tab{
+	Name = "Player",
+	Icon = "rbxassetid://12391275351"
+}
+
+local Tab2 = GUI:Tab{
+	Name = "Teleport's",
+	Icon = "rbxassetid://12391278701"
+}
+
+local Tab3 = GUI:Tab{
+	Name = "Autofarm",
+	Icon = "rbxassetid://12391282901"
+}
+
+local Tab4 = GUI:Tab{
+	Name = "Extra",
+	Icon = "rbxassetid://12391277595"
+}
+
+local Tab5 = GUI:Tab{
+	Name = "AutoBuy",
+	Icon = "rbxassetid://12391316855"
+}
+
+Tab1:Slider{
+	Name = "Walkspeed",
+	Default = 16,
+	Min = 16,
+	Max = 200,
+	Callback = function(Value) 
+_G.WS = (Value);
+				local Humanoid = game:GetService("Players").LocalPlayer.Character.Humanoid;
+				Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+				Humanoid.WalkSpeed = _G.WS;
+				end)
+				Humanoid.WalkSpeed = _G.WS;
+end
+}
+
+Tab1:Slider{
+	Name = "JumpPower",
+	Default = 50,
+	Min = 50,
+	Max = 150,
+	Callback = function(Value) 
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+end
+}
+
+Tab1:Slider{
+	Name = "Fov",
+	Default = 50,
+	Min = 0,
+	Max = 120,
+	Callback = function(k)
+workspace.CurrentCamera.FieldOfView = k
+end
+}
+
+
+Tab1:Slider{
+	Name = "Fov",
+	Default = 50,
+	Min = 0,
+	Max = 120,
+	Callback = function(k)
+workspace.CurrentCamera.FieldOfView = k
+end
+}
+
+Tab1:Slider{
+	Name = "Tp-Tool",
+	Default = 50,
+	Min = 0,
+	Max = 120,
+	Callback = function(k)
+loadstring(game:HttpGet("https://pastebin.com/raw/RfkSLmL5",true))()
+end
+}
+
+
+Tab2:Button{
+	Name = "Car Concessionnaire",
+	Description = nil,
+	Callback = function() 
+game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-459, 253, -1223)
+end
+}
+
+Tab2:Button{
+	Name = "Cop",
+	Description = nil,
+	Callback = function() 
+game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-459, 253, -1223)
+end
+}
+
+Tab2:Button{
+	Name = "Bank Upstairs",
+	Description = nil,
+	Callback = function() 
+game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-459, 253, -1223)
+end
+}
+
+Tab2:Button{
+	Name = "Bank Down there",
+	Description = nil,
+	Callback = function() 
+game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-459, 253, -1223)
+end
+}
+
+Tab2:Button{
+	Name = "IceBox",
+	Description = nil,
+	Callback = function() 
+game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-459, 253, -1223)
+end
+}
+
+Tab2:Button{
+	Name = "Gun Shop",
+	Description = nil,
+	Callback = function() 
+game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-459, 253, -1223)
+end
+}
+
+Tab2:Button{
+	Name = "Cook",
+	Description = nil,
+	Callback = function() 
+game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-459, 253, -1223)
+end
+}
+
+Tab2:Button{
+	Name = "Hotel",
+	Description = nil,
+	Callback = function() 
+game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-459, 253, -1223)
+end
+}
+
+Tab3:Button{
+	Name = "AutoFarm-Box",
+	Description = nil,
+	Callback = function() 
+    --//yeaaa
+workspace.BoxParts["1"].Size = Vector3.new(500000, 50000, 50000)
+workspace.BoxParts["1"].CanCollide = false
+
+local players = game:GetService("Players")
+local plr = players.LocalPlayer
+local backpack = plr:WaitForChild("Backpack")
+local char = plr.Character or plr.CharacterAdded:Wait()
+    local oldCFrame = nil
+    
+    if value then
+        oldCFrame = player.Character.HumanoidRootPart.CFrame
+    end
+getgenv().autofarm = true
+        while getgenv().autofarm do
+			local tool = backpack:FindFirstChild("Box") or char:FindFirstChild("Box")
+			local humr = char:FindFirstChild("HumanoidRootPart")
+			local hum = char:FindFirstChild("Humanoid")
+			if humr and hum then
+				if tool then
+					hum:EquipTool(tool)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-954.1965942382812, 246.53973388671875, -970.1163330078125)
+			    else
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-968.8911743164062, 246.53968811035156, -1037.9703369140625)
+					fireproximityprompt(workspace["1# Map"].RandomStuff:GetChildren()[360].Box.Handle.ProximityPrompt)
+			    end
+			end
+			task.wait()
+        end
+		if value then
+        player.Character.HumanoidRootPart.CFrame = oldCFrame
+		end
+end
+}
+
+Tab3:Button{
+	Name = "Stop-Autofarm-Box",
+	Description = nil,
+	Callback = function() 
+    getgenv().autofarm = false
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-968.8911743164062, 253.53968811035156, -1037.9703369140625)
+end
+}
+
+Tab4:Button{
+	Name = "Killaura",
+	Description = nil,
+	Callback = function() 
+    getgenv().autofarm = false
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-968.8911743164062, 253.53968811035156, -1037.9703369140625)
+end
+}
+Tab4:Button{
+	Name = "Infinity yield",
+	Description = nil,
+	Callback = function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source",true))()
+end
+}
+
+Tab5:Button{
+	Name = "Glock17",
+	Description = nil,
+	Callback = function()
+	local old_cframe = humr.CFrame
+	local _humr = selected_plr.Character:WaitForChild("HumanoidRootPart")
+	game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1210, 261, -806)
+	fireproximityprompt(workspace.GUNS.Glock17.Model.Model["3"].BuyPrompt)
+	wait(0.1)
+	humr.CFrame = old_cframe
+end
+}
